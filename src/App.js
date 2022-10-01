@@ -1,24 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Routes,
+  Route,
+  Link,
+} from 'react-router-dom';
+import HomePage from './page/HomePage';
+import TimerPage from './page/TimerPage';
+import AddLight from './page/AddLightPage';
+import Test from './page/test';
+import SignUp from './page/SignUpPage';
+import { AuthProvider } from './contexts/AuthContext';
+
+import Imitate from './page/Imitate';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route path='/' element={<Test />} />
+          <Route path='/SignUp' element={<SignUp />} />
+
+          <Route path='/Imitate' element={<Imitate />} />
+
+          <Route path='/Test' element={<Test />} />
+
+          <Route path='/TimerPage' element={<TimerPage />} />
+          <Route path='/AddLight' element={<AddLight />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 }
 
